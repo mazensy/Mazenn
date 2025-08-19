@@ -1,181 +1,176 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>الأقسام - موقع نيون 3D</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-<!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r148/three.min.js"></script>
-
-<style>
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #0a0a0a;
-    color: #00fff7;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 1rem;
-  }
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    text-shadow:
-      0 0 10px #00fff7,
-      0 0 20px #00fff7,
-      0 0 30px #00fff7;
-  }
-  .sections-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 900px;
-  }
-  .section-card {
-    background: #111;
-    border-radius: 20px;
-    box-shadow:
-      0 0 15px #00fff7,
-      0 0 30px #00fff7;
-    width: 260px;
-    height: 160px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #00fff7;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.4s ease;
-  }
-  .section-card:hover {
-    box-shadow:
-      0 0 40px #ff3ca6,
-      0 0 80px #ff3ca6;
-    color: #ff3ca6;
-  }
-  /* Neon glow effect */
-  .neon-glow {
-    text-shadow:
-      0 0 5px #00fff7,
-      0 0 10px #00fff7,
-      0 0 20px #00fff7,
-      0 0 40px #00fff7;
-  }
-
-  /* Canvas for 3D */
-  #bg-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-  }
-
-  @media (max-width: 600px) {
-    .section-card {
-      width: 90vw;
-      height: 140px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlarix Techno</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  }
-</style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header img {
+      width: 50px;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style-type: none;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    nav ul li a img {
+      width: 40px;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .service {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+    }
+
+    .service h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .buy-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .buy-button:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer a {
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<h1 class="neon-glow">اختر القسم</h1>
+  <!-- الشعار -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Vlarix Techno Logo">
+      <h1>Vlarix Techno</h1>
+    </div>
+  </header>
 
-<div class="sections-container">
-  <div class="section-card" data-link="facebook.html">فيسبوك</div>
-  <div class="section-card" data-link="#">إنستغرام (قريباً)</div>
-  <div class="section-card" data-link="#">تويتر (قريباً)</div>
-  <!-- أضف أقسام أخرى حسب الحاجة -->
-</div>
+  <!-- قائمة الشبكات الاجتماعية -->
+  <nav>
+    <ul>
+      <li><a href="#instagram"><img src="instagram-icon.png" alt="Instagram"></a></li>
+      <li><a href="#facebook"><img src="facebook-icon.png" alt="Facebook"></a></li>
+      <li><a href="#twitter"><img src="twitter-icon.png" alt="Twitter"></a></li>
+      <li><a href="#tiktok"><img src="tiktok-icon.png" alt="TikTok"></a></li>
+      <li><a href="#youtube"><img src="youtube-icon.png" alt="YouTube"></a></li>
+      <li><a href="#snapchat"><img src="snapchat-icon.png" alt="Snapchat"></a></li>
+      <li><a href="#threads"><img src="threads-icon.png" alt="Threads"></a></li>
+    </ul>
+  </nav>
 
-<!-- 3D Background Canvas -->
-<canvas id="bg-canvas"></canvas>
+  <!-- الأقسام العربية والأجنبية -->
+  <section id="instagram">
+    <h2>Instagram</h2>
+    <div class="services">
+      <div class="service">
+        <h3>زيادة المتابعين</h3>
+        <p>السعر: 10$</p>
+        <a href="https://wa.me/+963980962294" class="buy-button">شراء</a>
+      </div>
+      <!-- إضافة خدمات أخرى مشابهة... -->
+    </div>
+  </section>
 
-<script>
-  // Navigation
-  document.querySelectorAll('.section-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const link = card.dataset.link;
-      if(link && link !== '#') {
-        window.location.href = link;
-      }
-    });
-  });
+  <!-- الأقسام الأجنبية -->
+  <section id="instagram-foreign">
+    <h2>Instagram (Foreign)</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Followers Increase</h3>
+        <p>Price: $10</p>
+        <a href="https://wa.me/+963980962294" class="buy-button">Buy</a>
+      </div>
+      <!-- إضافة خدمات أخرى مشابهة... -->
+    </div>
+  </section>
 
-  // Three.js Background 3D Neon Particles
-  const canvas = document.getElementById('bg-canvas');
-  const renderer = new THREE.WebGLRenderer({canvas, alpha: true});
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.position.z = 5;
-
-  // Create neon particles
-  const particles = new THREE.Group();
-
-  function createParticle() {
-    const geometry = new THREE.SphereGeometry(0.03, 8, 8);
-    const material = new THREE.MeshBasicMaterial({color: 0x00fff7});
-    const sphere = new THREE.Mesh(geometry, material);
-    sphere.position.set(
-      (Math.random() - 0.5) * 10,
-      (Math.random() - 0.5) * 6,
-      (Math.random() - 0.5) * 4
-    );
-    return sphere;
-  }
-
-  for(let i=0; i<100; i++) {
-    const p = createParticle();
-    particles.add(p);
-  }
-
-  scene.add(particles);
-
-  function animate() {
-    requestAnimationFrame(animate);
-    particles.rotation.y += 0.0015;
-    particles.rotation.x += 0.0007;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // Responsive
-  window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-  });
-
-  // GSAP animation on cards on load
-  gsap.from(".section-card", {
-    opacity: 0,
-    y: 30,
-    stagger: 0.2,
-    duration: 1,
-    ease: "power2.out"
-  });
-</script>
+  <!-- روابط للتواصل عبر واتساب -->
+  <footer>
+    <p>للتواصل مع الدعم، يمكنك الاتصال عبر <a href="https://wa.me/+963980962294">واتساب</a></p>
+  </footer>
 
 </body>
 </html>
