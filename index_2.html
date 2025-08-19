@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlarix - خدمات وسائل التواصل الاجتماعي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+
+        .logo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-5px);
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .facebook { background: linear-gradient(45deg, #1877f2, #42a5f5); }
+        .instagram { background: linear-gradient(45deg, #e91e63, #f06292, #ff9800); }
+        .tiktok { background: linear-gradient(45deg, #000000, #ff0050); }
+        .youtube { background: linear-gradient(45deg, #ff0000, #ff5722); }
+        .twitter { background: linear-gradient(45deg, #1da1f2, #42a5f5); }
+        .snapchat { background: linear-gradient(45deg, #fffc00, #fdd835); }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">Vlarix</div>
+            <div class="subtitle">خدمات وسائل التواصل الاجتماعي المتقدمة</div>
+            <div class="description">نقدم لك أفضل خدمات زيادة المتابعين والتفاعل على جميع منصات التواصل الاجتماعي بجودة عالية وأسعار منافسة</div>
+        </header>
+
+        <div class="services-grid">
+            <!-- Facebook Services -->
+            <div class="service-card">
+                <div class="service-icon facebook">📘</div>
+                <h3 class="service-title">خدمات فيسبوك</h3>
+                <p class="service-description">زيادة المتابعين والإعجابات والتفاعل على صفحات فيسبوك</p>
+                <ul class="service-features">
+                    <li>متابعين حقيقيين ونشطين</li>
+                    <li>إعجابات على المنشورات</li>
+                    <li>تعليقات وتفاعل</li>
+                    <li>مشاهدات الفيديو</li>
+                    <li>ضمان عدم النقصان</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('فيسبوك')">اطلب الآن</a>
+            </div>
+
+            <!-- Instagram Services -->
+            <div class="service-card">
+                <div class="service-icon instagram">📷</div>
+                <h3 class="service-title">خدمات انستغرام</h3>
+                <p class="service-description">زيادة المتابعين والإعجابات والمشاهدات على انستغرام</p>
+                <ul class="service-features">
+                    <li>متابعين عرب وأجانب</li>
+                    <li>إعجابات فورية</li>
+                    <li>مشاهدات الستوري</li>
+                    <li>مشاهدات الريلز</li>
+                    <li>تعليقات حقيقية</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('انستغرام')">اطلب الآن</a>
+            </div>
+
+            <!-- TikTok Services -->
+            <div class="service-card">
+                <div class="service-icon tiktok">🎵</div>
+                <h3 class="service-title">خدمات تيكتوك</h3>
+                <p class="service-description">زيادة المتابعين والإعجابات والمشاهدات على تيكتوك</p>
+                <ul class="service-features">
+                    <li>متابعين نشطين</li>
+                    <li>إعجابات سريعة</li>
+                    <li>مشاهدات عالية الجودة</li>
+                    <li>مشاركات وحفظ</li>
+                    <li>تعليقات تفاعلية</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('تيكتوك')">اطلب الآن</a>
+            </div>
+
+            <!-- YouTube Services -->
+            <div class="service-card">
+                <div class="service-icon youtube">📺</div>
+                <h3 class="service-title">خدمات يوتيوب</h3>
+                <p class="service-description">زيادة المشتركين والمشاهدات والإعجابات على يوتيوب</p>
+                <ul class="service-features">
+                    <li>مشتركين حقيقيين</li>
+                    <li>مشاهدات عالية الجودة</li>
+                    <li>إعجابات وتعليقات</li>
+                    <li>وقت مشاهدة طويل</li>
+                    <li>تحسين ترتيب الفيديو</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('يوتيوب')">اطلب الآن</a>
+            </div>
+
+            <!-- Twitter Services -->
+            <div class="service-card">
+                <div class="service-icon twitter">🐦</div>
+                <h3 class="service-title">خدمات تويتر</h3>
+                <p class="service-description">زيادة المتابعين والإعجابات وإعادة التغريد على تويتر</p>
+                <ul class="service-features">
+                    <li>متابعين مستهدفين</li>
+                    <li>إعجابات سريعة</li>
+                    <li>إعادة تغريد</li>
+                    <li>ردود وتعليقات</li>
+                    <li>زيادة التفاعل</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('تويتر')">اطلب الآن</a>
+            </div>
+
+            <!-- Snapchat Services -->
+            <div class="service-card">
+                <div class="service-icon snapchat">👻</div>
+                <h3 class="service-title">خدمات سناب شات</h3>
+                <p class="service-description">زيادة المتابعين والمشاهدات على سناب شات</p>
+                <ul class="service-features">
+                    <li>متابعين نشطين</li>
+                    <li>مشاهدات الستوري</li>
+                    <li>نقاط سناب</li>
+                    <li>تفاعل حقيقي</li>
+                    <li>زيادة الشهرة</li>
+                </ul>
+                <a href="#" class="order-btn" onclick="orderService('سناب شات')">اطلب الآن</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-logo">Vlarix</div>
+            <div class="footer-text">نحن نقدم أفضل خدمات وسائل التواصل الاجتماعي بجودة عالية وأسعار منافسة</div>
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">📺</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/963980962294" class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+    <script>
+        function orderService(serviceName) {
+            const message = `مرحباً، أريد طلب خدمات ${serviceName} من موقع Vlarix`;
+            const whatsappUrl = `https://wa.me/963980962294?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate service cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initially hide cards and observe them
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
+
+            // Add floating animation to WhatsApp button
+            const whatsappBtn = document.querySelector('.whatsapp-float');
+            setInterval(() => {
+                whatsappBtn.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    whatsappBtn.style.transform = 'scale(1)';
+                }, 200);
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
+
