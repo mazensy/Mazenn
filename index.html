@@ -13,151 +13,169 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: #f5f5f5;
             color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="%23f5f5f5"></path></svg>') no-repeat center bottom;
+            background-size: cover;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px 0;
-        }
-
-        .logo {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 15px;
-            display: inline-block;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: translateY(-5px);
-        }
-
-        .subtitle {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .description {
-            color: rgba(255,255,255,0.9);
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             margin-bottom: 50px;
         }
 
-        .service-card {
+        .service-category {
             background: white;
             border-radius: 20px;
-            padding: 30px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-        }
-
-        .service-card:hover {
+        .service-category:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
+        .category-header {
+            padding: 30px;
+            text-align: center;
+            position: relative;
             color: white;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .facebook { background: linear-gradient(45deg, #1877f2, #42a5f5); }
-        .instagram { background: linear-gradient(45deg, #e91e63, #f06292, #ff9800); }
-        .tiktok { background: linear-gradient(45deg, #000000, #ff0050); }
-        .youtube { background: linear-gradient(45deg, #ff0000, #ff5722); }
-        .twitter { background: linear-gradient(45deg, #1da1f2, #42a5f5); }
-        .snapchat { background: linear-gradient(45deg, #fffc00, #fdd835); }
+        .facebook-header { background: linear-gradient(135deg, #1877f2 0%, #42a5f5 100%); }
+        .instagram-header { background: linear-gradient(135deg, #e91e63 0%, #f06292 50%, #ff9800 100%); }
+        .tiktok-header { background: linear-gradient(135deg, #000000 0%, #ff0050 100%); }
+        .youtube-header { background: linear-gradient(135deg, #ff0000 0%, #ff5722 100%); }
+        .twitter-header { background: linear-gradient(135deg, #1da1f2 0%, #42a5f5 100%); }
+        .snapchat-header { background: linear-gradient(135deg, #fffc00 0%, #fdd835 100%); color: #333; }
 
-        .service-title {
+        .category-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .category-title {
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .category-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .services-list {
+            padding: 0;
+        }
+
+        .service-item {
+            padding: 20px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item:hover {
+            background: #f8f9fa;
+        }
+
+        .service-name {
+            font-size: 16px;
+            font-weight: 600;
             color: #333;
+            margin-bottom: 8px;
         }
 
-        .service-description {
+        .service-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .detail-item {
+            text-align: center;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            font-weight: 600;
             color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 4px;
         }
 
-        .service-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .service-features li {
-            padding: 8px 0;
-            color: #555;
-            position: relative;
-            padding-right: 25px;
-        }
-
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            right: 0;
-            color: #4caf50;
+        .detail-value {
+            color: #333;
             font-weight: bold;
+        }
+
+        .price {
+            color: #e91e63;
         }
 
         .order-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 12px 30px;
             border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
 
         .order-btn:hover {
@@ -169,69 +187,125 @@
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 40px;
-            left: 40px;
+            bottom: 30px;
+            left: 30px;
             background-color: #25d366;
             color: white;
             border-radius: 50px;
             text-align: center;
             font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
             text-decoration: none;
+            animation: pulse 2s infinite;
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
         }
 
         .footer {
+            background: #333;
+            color: white;
             text-align: center;
-            padding: 40px 0;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            padding: 40px 20px;
             margin-top: 50px;
         }
 
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .footer-logo {
-            color: white;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             margin-bottom: 15px;
         }
 
         .footer-text {
-            color: rgba(255,255,255,0.8);
+            opacity: 0.8;
             margin-bottom: 20px;
         }
 
-        .social-links {
+        .contact-info {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .features-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background: #e3f2fd;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
@@ -239,12 +313,18 @@
                 grid-template-columns: 1fr;
             }
             
-            .container {
-                padding: 15px;
+            .service-details {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
             
-            .service-card {
-                padding: 20px;
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
             }
             
             .whatsapp-float {
@@ -258,115 +338,459 @@
     </style>
 </head>
 <body>
+    <header class="header">
+        <div class="logo">Vlarix</div>
+        <div class="subtitle">خدمات وسائل التواصل الاجتماعي المتقدمة</div>
+    </header>
+
     <div class="container">
-        <header class="header">
-            <div class="logo">Vlarix</div>
-            <div class="subtitle">خدمات وسائل التواصل الاجتماعي المتقدمة</div>
-            <div class="description">نقدم لك أفضل خدمات زيادة المتابعين والتفاعل على جميع منصات التواصل الاجتماعي بجودة عالية وأسعار منافسة</div>
-        </header>
-
-        <div class="services-grid">
-            <!-- Facebook Services -->
-            <div class="service-card">
-                <div class="service-icon facebook">📘</div>
-                <h3 class="service-title">خدمات فيسبوك</h3>
-                <p class="service-description">زيادة المتابعين والإعجابات والتفاعل على صفحات فيسبوك</p>
-                <ul class="service-features">
-                    <li>متابعين حقيقيين ونشطين</li>
-                    <li>إعجابات على المنشورات</li>
-                    <li>تعليقات وتفاعل</li>
-                    <li>مشاهدات الفيديو</li>
-                    <li>ضمان عدم النقصان</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('فيسبوك')">اطلب الآن</a>
-            </div>
-
-            <!-- Instagram Services -->
-            <div class="service-card">
-                <div class="service-icon instagram">📷</div>
-                <h3 class="service-title">خدمات انستغرام</h3>
-                <p class="service-description">زيادة المتابعين والإعجابات والمشاهدات على انستغرام</p>
-                <ul class="service-features">
-                    <li>متابعين عرب وأجانب</li>
-                    <li>إعجابات فورية</li>
-                    <li>مشاهدات الستوري</li>
-                    <li>مشاهدات الريلز</li>
-                    <li>تعليقات حقيقية</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('انستغرام')">اطلب الآن</a>
-            </div>
-
-            <!-- TikTok Services -->
-            <div class="service-card">
-                <div class="service-icon tiktok">🎵</div>
-                <h3 class="service-title">خدمات تيكتوك</h3>
-                <p class="service-description">زيادة المتابعين والإعجابات والمشاهدات على تيكتوك</p>
-                <ul class="service-features">
-                    <li>متابعين نشطين</li>
-                    <li>إعجابات سريعة</li>
-                    <li>مشاهدات عالية الجودة</li>
-                    <li>مشاركات وحفظ</li>
-                    <li>تعليقات تفاعلية</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('تيكتوك')">اطلب الآن</a>
-            </div>
-
-            <!-- YouTube Services -->
-            <div class="service-card">
-                <div class="service-icon youtube">📺</div>
-                <h3 class="service-title">خدمات يوتيوب</h3>
-                <p class="service-description">زيادة المشتركين والمشاهدات والإعجابات على يوتيوب</p>
-                <ul class="service-features">
-                    <li>مشتركين حقيقيين</li>
-                    <li>مشاهدات عالية الجودة</li>
-                    <li>إعجابات وتعليقات</li>
-                    <li>وقت مشاهدة طويل</li>
-                    <li>تحسين ترتيب الفيديو</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('يوتيوب')">اطلب الآن</a>
-            </div>
-
-            <!-- Twitter Services -->
-            <div class="service-card">
-                <div class="service-icon twitter">🐦</div>
-                <h3 class="service-title">خدمات تويتر</h3>
-                <p class="service-description">زيادة المتابعين والإعجابات وإعادة التغريد على تويتر</p>
-                <ul class="service-features">
-                    <li>متابعين مستهدفين</li>
-                    <li>إعجابات سريعة</li>
-                    <li>إعادة تغريد</li>
-                    <li>ردود وتعليقات</li>
-                    <li>زيادة التفاعل</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('تويتر')">اطلب الآن</a>
-            </div>
-
-            <!-- Snapchat Services -->
-            <div class="service-card">
-                <div class="service-icon snapchat">👻</div>
-                <h3 class="service-title">خدمات سناب شات</h3>
-                <p class="service-description">زيادة المتابعين والمشاهدات على سناب شات</p>
-                <ul class="service-features">
-                    <li>متابعين نشطين</li>
-                    <li>مشاهدات الستوري</li>
-                    <li>نقاط سناب</li>
-                    <li>تفاعل حقيقي</li>
-                    <li>زيادة الشهرة</li>
-                </ul>
-                <a href="#" class="order-btn" onclick="orderService('سناب شات')">اطلب الآن</a>
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="features-title">لماذا تختار Vlarix؟</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">تنفيذ سريع</h3>
+                    <p class="feature-description">نبدأ تنفيذ طلبك خلال دقائق من التأكيد</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <h3 class="feature-title">ضمان الجودة</h3>
+                    <p class="feature-description">جميع خدماتنا مضمونة وعالية الجودة</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💬</span>
+                    <h3 class="feature-title">متابعة مستمرة</h3>
+                    <p class="feature-description">متابعة تنفيذ طلبك عبر الواتساب</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <h3 class="feature-title">أسعار منافسة</h3>
+                    <p class="feature-description">أفضل الأسعار في السوق</p>
+                </div>
             </div>
         </div>
 
-        <footer class="footer">
-            <div class="footer-logo">Vlarix</div>
-            <div class="footer-text">نحن نقدم أفضل خدمات وسائل التواصل الاجتماعي بجودة عالية وأسعار منافسة</div>
-            <div class="social-links">
-                <a href="#" class="social-link">📘</a>
-                <a href="#" class="social-link">📷</a>
-                <a href="#" class="social-link">🐦</a>
-                <a href="#" class="social-link">📺</a>
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <!-- Facebook Services -->
+            <div class="service-category">
+                <div class="category-header facebook-header">
+                    <span class="category-icon">📘</span>
+                    <h2 class="category-title">خدمات فيسبوك</h2>
+                    <p class="category-description">زيادة المتابعين والتفاعل على فيسبوك</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">متابعين فيسبوك عرب</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">50K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('متابعين فيسبوك عرب', '1000', '$5')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">إعجابات منشورات فيسبوك</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$2</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">500</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">10K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('إعجابات منشورات فيسبوك', '500', '$2')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">مشاهدات فيديو فيسبوك</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">2000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">100K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشاهدات فيديو فيسبوك', '2000', '$3')">اطلب الآن</button>
+                    </div>
+                </div>
             </div>
-        </footer>
+
+            <!-- Instagram Services -->
+            <div class="service-category">
+                <div class="category-header instagram-header">
+                    <span class="category-icon">📷</span>
+                    <h2 class="category-title">خدمات انستغرام</h2>
+                    <p class="category-description">زيادة المتابعين والتفاعل على انستغرام</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">متابعين انستغرام عرب</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">20K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('متابعين انستغرام عرب', '1000', '$8')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">إعجابات انستغرام</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$1</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">500</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">20</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">5K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('إعجابات انستغرام', '500', '$1')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">مشاهدات ريلز انستغرام</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$2</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">5000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">500K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشاهدات ريلز انستغرام', '5000', '$2')">اطلب الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TikTok Services -->
+            <div class="service-category">
+                <div class="category-header tiktok-header">
+                    <span class="category-icon">🎵</span>
+                    <h2 class="category-title">خدمات تيكتوك</h2>
+                    <p class="category-description">زيادة المتابعين والتفاعل على تيكتوك</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">متابعين تيكتوك</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$12</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">10K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('متابعين تيكتوك', '1000', '$12')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">إعجابات تيكتوك</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$1.5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">20</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">50K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('إعجابات تيكتوك', '1000', '$1.5')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">مشاهدات تيكتوك</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$0.5</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">10000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">1M</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشاهدات تيكتوك', '10000', '$0.5')">اطلب الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Services -->
+            <div class="service-category">
+                <div class="category-header youtube-header">
+                    <span class="category-icon">📺</span>
+                    <h2 class="category-title">خدمات يوتيوب</h2>
+                    <p class="category-description">زيادة المشتركين والمشاهدات على يوتيوب</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">مشتركين يوتيوب</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$15</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">5K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشتركين يوتيوب', '1000', '$15')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">مشاهدات يوتيوب</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$2</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">5000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">1M</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشاهدات يوتيوب', '5000', '$2')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">إعجابات يوتيوب</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">500</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">20</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">10K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('إعجابات يوتيوب', '500', '$3')">اطلب الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Twitter Services -->
+            <div class="service-category">
+                <div class="category-header twitter-header">
+                    <span class="category-icon">🐦</span>
+                    <h2 class="category-title">خدمات تويتر</h2>
+                    <p class="category-description">زيادة المتابعين والتفاعل على تويتر</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">متابعين تويتر</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$10</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">10K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('متابعين تويتر', '1000', '$10')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">إعجابات تويتر</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$2</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">500</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">20</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">5K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('إعجابات تويتر', '500', '$2')">اطلب الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snapchat Services -->
+            <div class="service-category">
+                <div class="category-header snapchat-header">
+                    <span class="category-icon">👻</span>
+                    <h2 class="category-title">خدمات سناب شات</h2>
+                    <p class="category-description">زيادة المتابعين والمشاهدات على سناب شات</p>
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-name">متابعين سناب شات</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$8</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">50</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">5K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('متابعين سناب شات', '1000', '$8')">اطلب الآن</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-name">مشاهدات ستوري سناب شات</div>
+                        <div class="service-details">
+                            <div class="detail-item">
+                                <div class="detail-label">السعر</div>
+                                <div class="detail-value price">$3</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الكمية</div>
+                                <div class="detail-value">1000</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأدنى</div>
+                                <div class="detail-value">100</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">الحد الأقصى</div>
+                                <div class="detail-value">10K</div>
+                            </div>
+                        </div>
+                        <button class="order-btn" onclick="orderService('مشاهدات ستوري سناب شات', '1000', '$3')">اطلب الآن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- WhatsApp Float Button -->
@@ -374,9 +798,38 @@
         💬
     </a>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Vlarix</div>
+            <div class="footer-text">نحن نقدم أفضل خدمات وسائل التواصل الاجتماعي بجودة عالية وأسعار منافسة</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+963 980 962 294</span>
+                </div>
+                <div class="contact-item">
+                    <span>💬</span>
+                    <span>متابعة عبر الواتساب</span>
+                </div>
+                <div class="contact-item">
+                    <span>⚡</span>
+                    <span>تنفيذ سريع وموثوق</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        function orderService(serviceName) {
-            const message = `مرحباً، أريد طلب خدمات ${serviceName} من موقع Vlarix`;
+        function orderService(serviceName, quantity, price) {
+            const message = `مرحباً، أريد طلب خدمة: ${serviceName}
+الكمية: ${quantity}
+السعر: ${price}
+
+من موقع Vlarix
+
+أرجو تأكيد الطلب ومتابعة التنفيذ عبر الواتساب.`;
+            
             const whatsappUrl = `https://wa.me/963980962294?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
@@ -399,7 +852,7 @@
             }, observerOptions);
 
             // Initially hide cards and observe them
-            const cards = document.querySelectorAll('.service-card');
+            const cards = document.querySelectorAll('.service-category');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(50px)';
@@ -407,14 +860,25 @@
                 observer.observe(card);
             });
 
-            // Add floating animation to WhatsApp button
-            const whatsappBtn = document.querySelector('.whatsapp-float');
-            setInterval(() => {
-                whatsappBtn.style.transform = 'scale(1.1)';
+            // Animate feature items
+            const featureItems = document.querySelectorAll('.feature-item');
+            featureItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                observer.observe(item);
+            });
+        });
+
+        // Add click tracking for analytics
+        document.querySelectorAll('.order-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Add a small animation feedback
+                this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    whatsappBtn.style.transform = 'scale(1)';
-                }, 200);
-            }, 3000);
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
         });
     </script>
 </body>
