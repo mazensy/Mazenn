@@ -104,7 +104,6 @@
       </div>
     </div>
   </footer>  
-  
   <a href="https://wa.me/+963980962294" target="_blank" rel="noopener" class="fixed bottom-5 left-5 rounded-full p-4 bg-emerald-500/90 hover:bg-emerald-500 shadow-lg">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 .5A11.5 11.5 0 0 0 2.43 19.18L1 24l4.96-1.29A11.5 11.5 0 1 0 12 .5Zm6.78 16.7c-.28.8-1.39 1.46-2.28 1.65-.61.13-1.4.22-4.06-.84-3.41-1.41-5.6-4.86-5.77-5.08-.16-.22-1.38-1.85-1.38-3.53s.85-2.5 1.16-2.84c.28-.32.74-.46 1.18-.46.14 0 .27 0 .39.01.35.01.52.04.75.58.28.67.96 2.33 1.05 2.5.08.17.14.37.03.59-.11.22-.17.35-.34.54-.17.2-.29.35-.42.56-.13.21-.28.44-.12.71.17.27.77 1.27 1.66 2.06 1.15 1.02 2.11 1.34 2.41 1.49.3.15.48.13.66-.08.18-.21.76-.88.96-1.19.2-.31.41-.25.68-.15.28.1 1.77.83 2.07.98.3.15.5.23.57.36.07.13.07.76-.21 1.56Z"/></svg>
   </a>
@@ -199,9 +198,16 @@
     }
 
     function render(){
-      const hash = (location.hash || '#/facebook').replace('#/','');
-      const key = ['facebook','instagram','tiktok','telegram'].includes(hash)? hash : 'facebook';
+      const hash = (location.hash || '#/facebook').replace('#/', '');
+      const key = ['facebook', 'instagram', 'tiktok', 'telegram'].includes(hash) ? hash : 'facebook';
       const app = document.getElementById('app');
+      
+      // التأكد من وجود محتوى للقسم
+      if (!PLATFORMS[key]) {
+        app.innerHTML = '<div class="text-center py-20">القسم غير موجود.</div>';
+        return;
+      }
+
       app.innerHTML = sectionHTML(key);
       bindCardEvents(app, key);
     }
