@@ -1,0 +1,195 @@
+{% include 'ht.twig' %}
+
+
+
+<div class="app-content">
+	<div id="PageTitle">Orders</div>
+	<div class="container-fluid">
+		
+		<section class="orders-nav-wrapper">
+			<div class="row">
+				<div class="col-lg-7 col-md-12">
+					<ul class="orders-nav">
+						<li>
+							<a href="/orders" {% if 'all' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-sort-asc"></i>
+								</div>
+								<span class="text"> All
+								</span>
+							</a>
+						</li>
+							<li>
+							<a href="/orders/pending" {% if 'pending' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-loader-2-line"></i>
+								</div>
+								<span class="text"> Pending
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="/orders/inprogress" {% if 'inprogress' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-loader-2-line"></i>
+								</div>
+								<span class="text"> In progress
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="/orders/completed" {% if 'completed' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-checkbox-circle-line"></i>
+								</div>
+								<span class="text"> Completed
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="/orders/partial" {% if 'partial' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-pie-chart-line"></i>
+								</div>
+								<span class="text"> Partial
+								</span>
+							</a>
+						</li>
+						{#<li>#}
+						{#	<a href="/orders/processing" class="orders-nav-link ">#}
+						{#		<div class="icon">#}
+						{#			<i class="ri-truck-line"></i>#}
+						{#		</div>#}
+						{#		<span class="text"> Processing#}
+						{#		</span>#}
+						{#	</a>#}
+						{#</li>#}
+						<li>
+							<a href="/orders/canceled" {% if 'cancelled' == status %} class="orders-nav-link active" {% endif %} class="orders-nav-link">
+								<div class="icon">
+									<i class="ri-close-circle-line"></i>
+								</div>
+								<span class="text"> Canceled
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-5 col-md-12">
+					<div class="orders-nav-link op-search-box">
+						<div class="icon">
+							<i class="ri-search-line"></i>
+						</div>
+						<form action="/orders" method="get">
+							<input type="text" name="search" value="" placeholder="Search">
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ./row -->
+		</section>
+		<section class="op-orders-wrapper">
+
+							<div class="card mt-3">
+					<div class="card-body">
+					    <div class="row">
+                <div class="col">
+                    <div class="services-list__table">
+                        <div class="table-bg component_table ">
+                            <div class="table-wr table-responsive">
+                                <table class="table" id="service-table"> 
+          <thead>
+            <tr>
+              <th>{{ lang['orders.id'] }}</th>
+              <th>{{ lang['orders.date'] }}</th>
+              <th class="width-40">{{ lang['orders.link'] }}</th>
+              <th>{{ lang['orders.charge'] }}</th>
+              <th class="nowrap">{{ lang['orders.start.count'] }}</th>
+              <th>{{ lang['orders.quantity'] }}</th>
+              <th>{{ lang['orders.service'] }}</th>
+              <th>Status</th>
+              <th>Remains</th>
+<th> </th>
+            </tr>
+          </thead>
+          <tbody>
+<td colspan="9">
+            {% for order in orders %}
+              <tr>
+<td>
+<span class="orlc min">{{ order['id'] }}</span>
+                                        <a>
+                                            <span
+                                                data-clip="true"
+                                                title="Order Id copied"
+                                                data-clipboard-action="copy"
+                                                data-clipboard-target="#order-{{ order['id'] }}"
+                                                class="fas fa-clone"></span>
+                                        </a>
+
+                                        
+{% if order['order_where'] == "api"  %}<a class="btn btn-actions">Api</a>{% endif %} </td>
+                <td>{{ order['date'] }}</td>
+                <td class="width-40"><a   target="_blank" href="{{ order['link'] }}">{{ order['link'] }}</a></td>
+                 <td><span class="sp-serv-sm">{{ currency['symbol'] }}{{ (order['charge']*currency['value']) |round(4, 'floor') }}</span></td>
+                <td class="nowrap"><span class="sp-serv-sm">{{ order['start_count'] }}</span></td>
+                <td><span class="sp-serv-sm">{{ order['quantity'] }}</span></td>
+                <td><span class="sp-serv-sm">{{ order['service'] }}</span></td>
+                <td><span class="orlc min">{{ order['status'] }}</span></td>
+                <td><span class="sp-serv-sm">{{ order['remains'] }}</span></td>
+<td>
+
+
+                   
+               
+{% if order['refillbutton'] == "true"  %}
+{% if order['status'] == "Completed"  %}
+{% if order['refill'] == 1 %}
+
+{% if order['show_refill'] == "true"  %}
+
+                    <form action="" method="post" id="history-search">
+                         <input type="hidden" name="order_id" value="{{ order['id'] }}" /> 
+                         
+                         
+                        
+                       <input id="refill-button"  class=" btn btn-actions" type="submit" value="Refill" name="refill">
+
+                       </div>
+</form>
+
+
+                {% endif %}
+{% endif %}
+{% endif %}
+                
+    {% endif %}            
+
+
+               {% if order['cancel_button']   == "true" %}
+         
+
+
+                   <a href="orders/cancel/{{order['id']}}" class="btn btn-actions">cancel</a>
+               {% endif %}
+
+                 </td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+					</div>
+				</div>
+			
+
+			
+						</section>
+		</div>
+	</div>
+
+
+
+{% include 'ftd.twig' %}
