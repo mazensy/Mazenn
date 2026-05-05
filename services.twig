@@ -1,0 +1,262 @@
+{% include 'ht.twig' %}
+
+<!-- Main variables *content* -->
+		<style>
+  .hidden,
+  [hidden] {
+    display: none;
+  }
+</style>
+<div class="app-content">
+  <div id="PageTitle">Services</div>
+  <div class="container-fluid ">
+    <section class="dashboard-head-wrapper">
+      <div class="dashboard-head card-border">
+        <img src="https://cdn.mypanel.link/dfdhtt/rlm42sazpgok8c5w.png" class="mascot-img"/>
+        <div class="dhead-body">
+          <h2 class="title">
+            Our Services
+          </h2>
+          <p class="text">
+            <a href="/tickets">Let us know</a>
+            If you are an agency or API for reseller offers list.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="mb-4">
+      <div class="card card-border">
+        <div class="card-body">
+          <div class="row align-items-center">
+           <div class="col-md-4 col-12 col-lg-3">
+                                            <a class="select-button" href="#" role="button" id="dropdown-category-filter-7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="fal fa-filter"> Filter </span>
+                                                <span class="services-filter__active-category" data-filter-active-category="true"></span>
+                                            </a>
+                                            <div class="dropdown-menu"><a class="dropdown-item"  data-filter-category-id="All">All</a>{% for category in serviceCategory %}
+                                                                                                                                                                                                <a class="dropdown-item" href="services#" data-filter-category-id="{{ category["category_id"] }}" data-filter-category-name="{{ category["category_name"] }}">{{ category["category_name"] }}</a>{% endfor %}
+                                                                                                                                                                                                
+                                                                                                                                          </div>
+                                        </div>
+            <!-- ./col -->
+            <div class="col-md-4 ms-md-auto ms-md-0 col-12 mt-3 mt-md-0 col-lg-2">
+              <div class="dropdown">
+                <button class="select-button dropdown-toggle btn-block text-start" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="selected-text">Currency</span>
+                  <span class="select-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="16" height="16">
+                      <path fill="none" d="M0 0h24v24H0z"></path>
+                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" fill="rgba(198,198,198,1)"></path>
+                    </svg>
+                  </span>
+                </button>
+                <ul class="dropdown-menu">   {% for curr in currencies %} <li class="nav-item component-navbar-nav-item component-navbar-private-nav-item"> <a class="dropdown-item" href="/account/currency_preferred/{{ curr["id"]}}"> {{ curr["symbol"]}} {{ curr["name"]}}</a></li>    {% endfor %}
+       </ul>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg">
+              <div class="search-services">
+                <div class="icon">
+                  <i class="ri-search-line"></i>
+                </div>
+                <input type="text" class="textbox" name="query" id="filterServicesInput" placeholder="Search in services" data-search-service="#service-table">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="nothing-found" style="display: none;">
+      <div class="card card-border">
+        <div class="card-body p-4 p-lg-5 text-center">
+          <div style="font-size: 64px">
+            <i class="ri-search-eye-line w-color"></i>
+          </div>
+          <h3>Nothing found</h3>
+          <p>We searched everywhere but couldn't find anything. Try with different keywords.</p>
+          <div class="text-center d-none">
+            <a href="/" class="btn btn-seconday">Create request for
+              <span id="search-text-write"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+          {#<div class="card-header2 d-none d-lg-block">#}
+          {#  <div class="s-title-wrapper">#}
+          {#    <div class="s-row s-title">#}
+          {#      <div class="s-col s-col-sm">#}
+          {#        ID#}
+          {#      </div>#}
+          {#      <div class="s-col s-title">#}
+          {#        Service#}
+          {#      </div>#}
+          {#      <div class="s-col s-col-md">#}
+          {#        Per 1000#}
+          {#      </div>#}
+          {#      <div class="s-col s-col-md">#}
+          {#        Min order#}
+          {#      </div>#}
+          {#      <div class="s-col s-col-md">#}
+          {#        Max Order#}
+          {#      </div>#}
+          {#      <div class="s-col s-col-lg">#}
+          {#        Avg. Time#}
+          {#      </div>#}
+          {#      <div class="s-col s-col-md">#}
+          {#        Details#}
+          {#      </div>#}
+          {#    </div>#}
+          {#  </div>#}
+          {#</div>#}
+     <div class="row">
+                <div class="col">
+                    <div class="services-list__table">
+                        <div class="table-bg component_table ">
+                            <div class="table-wr table-responsive">
+                                <table class="table" id="service-table"> 
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th class="nowrap">Service</th>
+                                        <th class="nowrap">Rate per 1000</th>
+                                        <th class="nowrap">Min order</th>
+                                        <th class="nowrap">Max order</th>
+<th class="nowrap" nowrap>
+                                                <div class="d-flex align-items-center">
+                                                    <span>Average time</span>
+                                                    <span class="ml-1 mr-1 fa fa-exclamation-circle" data-toggle="tooltip" data-placement="top" title="The average time is based on 10 latest completed orders per 1000 quantity."></span>
+                                                </div>
+                                            </th>
+                                                                                                                            <th class="hidden-xs hidden-sm service-description__th">Description</th>
+                                                                            </tr>
+                                    </thead>
+                                    <tbody>
+            
+
+              {% for category in serviceCategory %}
+                                                                                                            <tr class="services-list-category-title" data-filter-table-category-id="{{ category["category_id"] }}">
+                                                <td colspan="7">
+                                                   <div class="w-109 " width="60%">
+                                                       <div class="sp-service-title">
+                                                           {{ category["category_name"] }}
+                                                       </div>
+                                                   </div>
+                                                </td>
+                                            </tr>
+
+
+                                                
+
+                {% for service in category['services'] %}
+                  <tr data-filter-table-category-id="{{ category["category_id"] }}">
+                    <td data-label="ID" data-filter-table-service-id="{{ service["service_id"] }}"><div class="service-item">
+                    <div class="s-row">
+                      
+                      <div class="s-col s-col-sm s-col-id" data-category="Special Offer For ELNA7O User">
+                        {{ service["service_id"] }}
+                      </div>
+                                        </td>
+                    <td data-label="Service" class="sp-serv-title" data-filter-table-service-name="true"> <div class="s-col s-title">
+                        <span class="sp-serv-title">{{ service["service_name"] }}</span>
+                      </div></td> 
+                    
+                    <td><div class="s-col s-col-md s-col-c" data-title="Per 1000">
+                        <span class="sp-serv-sm">
+                                                      <span data-toggle="tooltip" data-placement="top" title="$2.50">{{ currency['symbol'] }}{{ (service["service_price"]*currency["value"]) }}   </span>
+                                                  </span></div>
+                      
+
+                    </td>
+                    <td> <div class="s-col s-col-md s-col-c" data-title="Min">
+                        <span class="orlc min">{{ service["service_min"] }}</span>
+                      </div></td>
+                    <td><div class="s-col s-col-md s-col-c" data-title="Max">
+                        <span class="orlc max">{{ service["service_max"] }}</span>
+                      </div></td>
+                    
+                    <td>  <div class="s-col s-col-lg s-col-avtime" data-title="Average Time">
+                        <span class="sp-serv-sm">{{ service["time"] }}</span>
+                      </div></td>
+                     
+                     <td>
+                     <!-- Modal -->
+                        <div class="modal fade" id="servis{{ service["service_id"] }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{ service["service_name"] }} </h5> 
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div class="modal-body text-left">
+                                <p class="detail-data details-split-959"> {{ service["service_description"] }}</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-actions" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>{% if service["service_description"]  %}
+                        </div><a href="javascript:void(0)" class="btn btn-actions " data-toggle="modal" data-target="#servis{{ service["service_id"] }}">
+                         View
+                      </a>
+                  {% endif %} 
+                        </td>
+
+                  </tr>    
+                {% endfor %}
+              {% endfor %}
+
+          </tbody>
+        </table>
+ </div>
+  
+  <!-- ./container-fluid -->
+</div>
+<!-- app-content -->
+                              
+                              
+                              
+
+<script type="text/javascript" src="public/ch3915babussofa4.js">
+      </script>
+      
+
+
+
+
+<script type="text/javascript"  src="https://cdn.mypanel.link/libs/jquery/1.12.4/jquery.min.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/global/aknio8ec1fpphc0p.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/global/nfos6j9mo1on7ksz.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/global/w96qrbn5gp16oi2j.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/global/bsfhjacqw299fzni.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/59usu6/0xj9pnys4ei6bk7i.js" >
+							</script>
+					<script type="text/javascript"  src="https://cdn.mypanel.link/59usu6/b0t49fj5itxwcju5.js" >
+							</script>
+					<script type="text/javascript" >
+				window.modules.layouts = {"theme_id":1,"auth":1,"live":true,"csrftoken":"Wj6i1BP8-mWWEDSIg-sGt1KksLJmR7tqwevbWmu5SykUdNK3WIu-MvRDfOnNnUTgCOL12TQJ7A2EhJ4jIM8_Rw=="};
+			</script>
+					<script type="text/javascript" >
+							</script>
+		      
+      <!-- bootstrap javascript bundle -->
+<script src="https://cdn.smmspot.net/elnao/assets/js/bootstrap.bundle.min.js"></script>
+<!-- swiper.js -->
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<!-- actulus selectbox --> 
+<script src="https://cdn.smmspot.net/elnao/assets/js/actulus.selectbox.js"></script>
